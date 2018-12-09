@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace ConsoleGame.Gui
+namespace Praktine_uzduotis.Gui
 {
     class Button : GuiObject
     {
-
-        private Frame notActiveFrame;
-        private Frame activeFrame;
-
-        private bool isActive = false;
-        private TextLine textLine;
+        protected Frame activeFrame;
+        protected bool isActive = false;
+        protected Frame notActiveFrame;
+        protected TextLine textLine;
 
         public Button(int x, int y, int width, int height, string buttonText) : base(x, y, width, height)
         {
@@ -35,9 +35,9 @@ namespace ConsoleGame.Gui
             textLine.Render();
         }
 
-        public void SetActive()
+        public void SetActive(bool active)
         {
-            isActive = true;
-        }
+            isActive = active;
+        }        
     }
 }

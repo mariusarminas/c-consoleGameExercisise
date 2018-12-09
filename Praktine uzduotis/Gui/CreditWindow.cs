@@ -1,11 +1,12 @@
-﻿using ConsoleGame.Gui;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace ConsoleGame.View
+namespace Praktine_uzduotis.Gui
 {
-    sealed class CreditWindow : Window
+    class CreditWindow : Window
     {
 
         private Button backButton;
@@ -18,28 +19,28 @@ namespace ConsoleGame.View
 
             creditData.Add("");
             creditData.Add("Game design:");
-            creditData.Add("Vardas Vardaitis");
+            creditData.Add("Marius Arminas");
             creditData.Add("");
             creditData.Add("Programuotojas:");
-            creditData.Add("Vardas Vardaitis");
+            creditData.Add("Marius Arminas");
             creditData.Add("");
             creditData.Add("\'Art\':");
-            creditData.Add("Vardas Vardaitis");
+            creditData.Add("Marius Arminas");
             creditData.Add("");
             creditData.Add("Marketingas:");
-            creditData.Add("Vardas Vardaitis");
+            creditData.Add("Marius Arminas");
             creditData.Add("");
 
             creditTextBlock = new TextBlock(28 + 1, 10 + 1, 60 - 1, creditData);
 
 
             backButton = new Button(28 + 20, 10 + 14, 18, 3, "Back");
-            backButton.SetActive();
+            backButton.SetActive(true);
 
-            Render();
+            // Render();
         }
 
-        public override void Render()
+        public void Render()
         {
             base.Render();
             creditTextBlock.Render();
@@ -48,5 +49,6 @@ namespace ConsoleGame.View
             Console.SetCursorPosition(0, 0);
         }
 
+    
     }
 }

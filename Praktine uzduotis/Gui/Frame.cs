@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace ConsoleGame.Gui
+namespace Praktine_uzduotis.Gui
 {
     class Frame : GuiObject
     {
-        private char _renderChar;
+        protected char _renderChar;
 
-        public Frame(int x, int y, int width, int height, char renderChar) : base(x, y, width, height)
+        public Frame(int x, int y, int width, int height, char renderChar): base(x, y, width, height)
         {
             _renderChar = renderChar;
         }
-
-
         public override void Render()
         {
             for (int i = 0; i < _height; i++)
@@ -39,5 +39,4 @@ namespace ConsoleGame.Gui
             }
         }
     }
-
 }

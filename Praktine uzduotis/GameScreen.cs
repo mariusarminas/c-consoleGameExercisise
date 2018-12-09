@@ -1,21 +1,26 @@
-﻿using System;
+﻿using Praktine_uzduotis.Gui;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace ConsoleGame.Game
+namespace Praktine_uzduotis
 {
     class GameScreen
     {
-        private int width;
-        private int height;
+        private int Width;
+        private int Height;
 
         private Hero hero;
         private List<Enemy> enemies = new List<Enemy>();
+        private Frame frame;
 
-        public GameScreen(int width, int height)
+        public GameScreen(int GameWidth, int GameHeight)
         {
-            this.width = width;
-            this.height = height;
+            Width = GameWidth;
+            Height = GameHeight;
+            frame = new Frame(0, 0, Width, Height, '+');
         }
 
         public void SetHero(Hero hero)
@@ -30,10 +35,12 @@ namespace ConsoleGame.Game
 
         public void Render()
         {
-            hero.PrintInfo();
+            frame.Render();
+            hero.Render();
             foreach (Enemy enemy in enemies)
             {
-                enemy.PrintInfo();
+                if (!enemy.IsDead())
+                    enemy.Render();
             }
         }
 
@@ -42,11 +49,22 @@ namespace ConsoleGame.Game
             return hero;
         }
 
+        public void AddEnemy()
+        {
+            Random random = new Random();
+            int x = random.Next(0, Width);
+            AddEnemy(new Enemy(0, x, 1, "Name"));
+        }
+
         public void MoveAllEnemiesDown()
         {
             foreach (Enemy enemy in enemies)
             {
                 enemy.MoveDown();
+                if (enemy.GetY() == Height - 1)
+                {
+                    enemy.SetIsDead(true);
+                }
             }
         }
 

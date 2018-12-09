@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace ConsoleGame.Gui
+namespace Praktine_uzduotis.Gui
 {
-    sealed class TextBlock : GuiObject
+    class TextBlock: GuiObject
     {
-        private List<TextLine> textBlocks = new List<TextLine>();
+    private List<TextLine> textBlocks = new List<TextLine>();
 
         public TextBlock(int x, int y, int width, List<string> textList) : base(x, y, width, 0)
         {
